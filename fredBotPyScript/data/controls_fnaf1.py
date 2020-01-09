@@ -52,6 +52,14 @@ def camera_main_stage():
     return room_empty
 
 
+# Misc functions
+def start_game():
+    pyautogui.moveTo(width - 100, height / 2, duration=1)
+    pyautogui.leftClick()
+    pyautogui.moveTo(width - 100, height / 2, duration=1)
+    pyautogui.leftClick()
+
+
 # Dummy functions
 def control_check_room():
     is_clear = check_room()
