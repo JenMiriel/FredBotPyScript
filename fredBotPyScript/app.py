@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
-import fredBotPyScript.data.controls_fnaf1
+import fredBotPyScript.data.controls_fnaf1 as control
 
 
 def run():
     print("Hello Freddy!")
-    camera_up = fredBotPyScript.data.controls_fnaf1.cameraUp
+    camera_up = control.cameraUp
     print("camera up: ", camera_up)
 
-    fredBotPyScript.data.controls_fnaf1.check_left_door()
-    fredBotPyScript.data.controls_fnaf1.check_right_door()
+    control.start_game()
 
-    camera_up = fredBotPyScript.data.controls_fnaf1.check_cameras(camera_up)
+    control.check_left_door()
+    control.check_right_door()
+
+    camera_up = control.check_cameras(camera_up)
     print("camera up: ", camera_up)
 
-    main_stage_clear = fredBotPyScript.data.controls_fnaf1.camera_main_stage()
+    main_stage_clear = control.camera_main_stage()
+    print("Is Main Stage Safe? ", main_stage_clear)
 
-    camera_up = fredBotPyScript.data.controls_fnaf1.check_cameras(camera_up)
+    camera_up = control.check_cameras(camera_up)
     print("camera up: ", camera_up)
 
