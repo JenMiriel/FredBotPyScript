@@ -4,7 +4,7 @@ import fredBotPyScript.data.controls_fnaf1 as control
 
 def run():
     print("Hello Freddy!")
-    camera_up = control.cameraUp
+    camera_up = control.CInfo.cameraUp
     print("camera up: ", camera_up)
 
     control.start_game()
