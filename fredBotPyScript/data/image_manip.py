@@ -6,22 +6,27 @@ import numpy as np
 import cv2
 
 
-def check_room():
+def check_room(room_number):
     # take screenshot
-    take_screenshot()
+    take_screenshot(room_number)
     # see if screenshot has robot / image manip
     # if no robot, is_clear = True; if robot, is_clear = False
-    is_room_empty = compare_screens()
+    is_room_empty = compare_screens(room_number)
     return is_room_empty
 
 
-def take_screenshot():
+def take_screenshot(room_number="office"):
     my_screenshot = pyautogui.screenshot()
-    save_path = str(Path.cwd()) + "\\resources\\compare.png"
+    save_path = str(Path.cwd()) + "\\resources\\" + room_number + ".png"
     my_screenshot.save(save_path)
 
 
-def compare_screens():
+def initialize_camera_screenshots():
+    take_screenshot()
+    # take screens of all rooms
+
+
+def compare_screens(room_number):
     # compare the images to the standard empty room
     are_images_similar = True
 
