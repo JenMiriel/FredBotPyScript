@@ -17,7 +17,7 @@ def check_room(room_number):
 
 def take_screenshot(room_number="office"):
     my_screenshot = pyautogui.screenshot()
-    save_path = str(Path.cwd()) + "\\resources\\" + room_number + ".png"
+    save_path = str(Path.cwd()) + "\\resources\\screens\\" + room_number + ".png"
     my_screenshot.save(save_path)
 
 
@@ -29,9 +29,9 @@ def compare_screens(room_number):
     # and the original + photoshop
     # original = cv2.imread("images/jp_gates_original.png")
     # contrast = cv2.imread("images/jp_gates_contrast.png")
-    original_room = cv2.imread("resources/main_stage_original.png")
+    original_room = cv2.imread("resources/screens/main_stage_original.png")
     # compare_room = cv2.imread("resources/compare.png")
-    compare_room = cv2.imread("resources/main_stage_original_modified.png")
+    compare_room = cv2.imread("resources/screens/main_stage_original_modified.png")
 
     # convert the images to grayscale
     # original = cv2.cvtColor(original, cv2.COLOR_BGR2GRAY)
