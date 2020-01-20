@@ -21,11 +21,6 @@ def take_screenshot(room_number="office"):
     my_screenshot.save(save_path)
 
 
-def initialize_camera_screenshots():
-    take_screenshot()
-    # take screens of all rooms
-
-
 def compare_screens(room_number):
     # compare the images to the standard empty room
     are_images_similar = True
