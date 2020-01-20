@@ -8,11 +8,11 @@ def run():
     # initialize screenshots
     control.initialize_camera_screenshots()
 
-    # control.CInfo.cameraUp = control.check_cameras(control.CInfo.cameraUp)
+    control.CInfo.cameraUp = control.check_cameras(control.CInfo.cameraUp)
 
-    # control.check_left_door()
-    # control.check_right_door()
-    #
+    control.check_left_door()
+    control.check_right_door()
+
     # # check the dining room
     # control.camera_check_room("cam1b")
     #

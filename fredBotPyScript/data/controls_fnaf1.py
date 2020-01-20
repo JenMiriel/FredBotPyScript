@@ -145,14 +145,14 @@ def start_game():
     # look at start options
     take_screenshot("main_menu")
     im = pyautogui.screenshot(region=(160, 400, 385, 515))
-    # im.save('resources\\temp.jpg')
-    # im = Image.open("resources\\temp.jpg")  # the second one
+    # im.save('resources\\screens\\temp.jpg')
+    # im = Image.open("resources\\screens\\temp.jpg")  # the second one
     # im = im.filter(ImageFilter.MedianFilter())
     # enhancer = ImageEnhance.Contrast(im)
     # im = enhancer.enhance(2)
     # im = im.convert('1')
-    # im.save('resources\\temp2.jpg')
-    # text = pytesseract.image_to_string(Image.open('resources\\temp2.jpg'))
+    # im.save('resources\\screens\\temp2.jpg')
+    # text = pytesseract.image_to_string(Image.open('resources\\screens\\temp2.jpg'))
     # print(text)
 
     # click new game
@@ -176,7 +176,7 @@ def start_game():
     # time.sleep(18)
 
     # wait for continue game load
-    time.sleep(5)
+    time.sleep(10)
 
     # click continue game
     # pyautogui.moveTo(width - 100, height / 2, duration=1)
@@ -211,14 +211,17 @@ def initialize_camera_screenshots():
     switch_left_hall_light()
     print("screenshotting Left Office Light")
     take_screenshot("left_office_light")
+    time.sleep(2)
     switch_left_hall_light()
 
     left_door()
     print("screenshotting Left Office Door")
+    time.sleep(2)
     take_screenshot("left_office_door")
 
     switch_left_hall_light()
     print("screenshotting Left Office Door Light")
+    time.sleep(2)
     take_screenshot("left_office_door_light")
     left_door()
     switch_left_hall_light()
@@ -229,15 +232,18 @@ def initialize_camera_screenshots():
 
     switch_right_hall_light()
     print("screenshotting Right Office Light")
+    time.sleep(2)
     take_screenshot("right_office_light")
     switch_right_hall_light()
 
     right_door()
     print("screenshotting Right Office Door")
+    time.sleep(2)
     take_screenshot("right_office_door")
 
     switch_right_hall_light()
     print("screenshotting Right Office Door Light")
+    time.sleep(2)
     take_screenshot("right_office_door_light")
     right_door()
     switch_right_hall_light()
