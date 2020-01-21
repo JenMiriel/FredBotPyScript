@@ -2,14 +2,18 @@
 import pyautogui
 from fredBotPyScript.data.image_manip import check_room
 from fredBotPyScript.data.image_manip import take_screenshot
+from fredBotPyScript.data.image_manip import find_text_in_image
 import subprocess
 import time
 import os
-from PIL import Image, ImageEnhance, ImageFilter
 import pytesseract
+from PIL import Image, ImageEnhance, ImageFilter
+import argparse
+import cv2
 
-pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files (x86)/Tesseract-OCR/tesseract'
-TESSDATA_PREFIX = 'C:/Program Files (x86)/Tesseract-OCR'
+pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract'
+
+TESSDATA_PREFIX = 'C:/Program Files/Tesseract-OCR'
 
 
 class Room:
@@ -144,39 +148,35 @@ def start_game():
 
     # look at start options
     take_screenshot("main_menu")
-    im = pyautogui.screenshot(region=(160, 400, 385, 515))
-    # im.save('resources\\screens\\temp.jpg')
-    # im = Image.open("resources\\screens\\temp.jpg")  # the second one
-    # im = im.filter(ImageFilter.MedianFilter())
-    # enhancer = ImageEnhance.Contrast(im)
-    # im = enhancer.enhance(2)
-    # im = im.convert('1')
-    # im.save('resources\\screens\\temp2.jpg')
-    # text = pytesseract.image_to_string(Image.open('resources\\screens\\temp2.jpg'))
-    # print(text)
+    im = pyautogui.screenshot(region=(160, 400, 300, 200))
+    im.save('resources\\screens\\temp.jpg')
+    main_menu_options = find_text_in_image('resources\\screens\\temp.jpg')
+    continue_or_nah = main_menu_options.find('Continue')
 
-    # click new game
-    # pyautogui.moveTo(222, 424, duration=1)
-    # pyautogui.leftClick()
-    # print("New Game click")
-
-    # click continue
-    pyautogui.moveTo(222, 494, duration=1)
-    pyautogui.leftClick()
-    print("Continue Game click")
+    if continue_or_nah < 0:
+        # click new game
+        print("New Game click")
+        pyautogui.moveTo(222, 424, duration=1)
+        pyautogui.leftClick()
+    else:
+        # click continue
+        print("Continue Game click")
+        pyautogui.moveTo(222, 494, duration=1)
+        pyautogui.leftClick()
 
     # get and set screen size
     print(pyautogui.size())
     CInfo.width, CInfo.height = pyautogui.size()
     CInfo.rooms = initialize_room_locations(CInfo.width, CInfo.height)
 
-    # wait for new game load
-    # time.sleep(2)
-    # pyautogui.press('enter')
-    # time.sleep(18)
-
-    # wait for continue game load
-    time.sleep(10)
+    if continue_or_nah < 0:
+        # wait for new game load
+        time.sleep(2)
+        pyautogui.press('enter')
+        time.sleep(18)
+    else:
+        # wait for continue game load
+        time.sleep(10)
 
     # click continue game
     # pyautogui.moveTo(width - 100, height / 2, duration=1)
