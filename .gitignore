@@ -1,6 +1,6 @@
 
 # App files
-resources/
+resources/screens/*
 
 # Editors
 .vscode/
